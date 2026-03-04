@@ -66,5 +66,5 @@ Command line utilities for working with HEIF/HEIC images.
 %{_mandir}/man1/heif-*.1*
 
 %changelog
-* Tue Mar 03 2026 You <you@example.com> - 1.21.2-1
+* Tue Mar 03 2026 Thomas <thomas.elsgaard@gmail.com> - 1.21.2-1
 - Initial HEIC-only build for AlmaLinux 10
