@@ -6,10 +6,7 @@ Install required build tools
 sudo dnf install -y https://download1.rpmfusion.org/free/el/rpmfusion-free-release-10.noarch.rpm
 sudo dnf -y update
 sudo dnf -y groupinstall "Development Tools"
-
-sudo dnf -y install dnf-plugins-core rpmdevtools rpmlint
-sudo dnf config-manager --set-enabled crb
-sudo dnf -y install cmake ninja-build pkgconfig curl libde265 libde265-devel x265 x265-devel
+sudo dnf -y install dnf-plugins-core rpmdevtools
 ```
 
 # Create the RPM build tree
@@ -37,7 +34,7 @@ cp libheif-1.21.2.tar.gz ~/rpmbuild/SOURCES/
 ```
 
 # Create or update the spec file
-Create ~/rpmbuild/SPECS/libheif.spec and ensure the Version: and Source0: entries match the tarball you downloaded.
+Create ~/rpmbuild/SPECS/libheif.spec and ensure the Version entries match the tarball you downloaded.
 Example CMake build options for enabling libde265 and x265 while disabling optional codecs you do not want:
 
 ```spec
@@ -53,8 +50,13 @@ Example CMake build options for enabling libde265 and x265 while disabling optio
   -DCMAKE_DISABLE_FIND_PACKAGE_OpenH264=TRUE
 ```
 
+# Fetch dependencies
+```shell
+sudo dnf builddep -y ~/rpmbuild/SPECS/libheif.spec
+```
+
 # Build the RPMs
-```console
+```shell
 cd ~/rpmbuild/SPECS
 rpmbuild -ba libheif.spec
 ```
@@ -68,6 +70,7 @@ The source RPMs will be placed under:
 ```plain text
 ~/rpmbuild/SRPMS/
 ```
+
 
 
 
