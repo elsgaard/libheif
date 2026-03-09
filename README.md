@@ -57,8 +57,7 @@ sudo dnf builddep -y ~/rpmbuild/SPECS/libheif.spec
 
 # Build the RPMs
 ```shell
-cd ~/rpmbuild/SPECS
-rpmbuild -ba libheif.spec
+rpmbuild -ba ~/rpmbuild/SPECS/libheif.spec
 ```
 
 The resulting RPMs will be placed under:
