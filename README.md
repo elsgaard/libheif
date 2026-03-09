@@ -4,9 +4,11 @@ This guide shows how to build libheif from an upstream release tarball into RPM 
 Install required build tools
 ```shell
 sudo dnf install -y https://download1.rpmfusion.org/free/el/rpmfusion-free-release-10.noarch.rpm
+sudo dnf -y update
+sudo dnf -y groupinstall "Development Tools"
+
 sudo dnf -y install dnf-plugins-core rpmdevtools rpmlint
 sudo dnf config-manager --set-enabled crb
-sudo dnf -y groupinstall "Development Tools"
 sudo dnf -y install cmake ninja-build pkgconfig curl libde265 libde265-devel x265 x265-devel
 ```
 
